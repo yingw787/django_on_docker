@@ -38,6 +38,11 @@ FROM python:3.8.0-alpine
 RUN mkdir -p /home/app
 
 # create the app user
+#
+# This is important for security considerations; Docker runs container processes
+# as root inside of a container. This is a bad practice since attackers can gain
+# root access to the Docker host if they manage to break out of the container.
+# If you're root in the container, you'll be root on the host.
 RUN addgroup -S app && adduser -S app -G app
 
 # create the appropriate directories

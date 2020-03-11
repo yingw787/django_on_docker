@@ -1,4 +1,8 @@
 # BUILDER #
+#
+# This references Docker's ability to generate intermediate images to build
+# items, then discard them in production to reduce final image size:
+# https://docs.docker.com/develop/develop-images/multistage-build/
 
 # pull official base image
 FROM python:3.8.0-alpine as builder

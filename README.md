@@ -61,6 +61,36 @@ To tear down an instance:
 docker-compose -f docker-compose.prod.yml down -v # -v to remove the asociated Docker volumes
 ```
 
+## Deploying to Amazon Web Services
+
+After 5 days of searching, I don't think there's a practical way of deploying
+databases onto AWS container services. There were a number of approaches I
+wanted to take:
+
+-   Anything with AWS RDS. Out of the question, because I want to use a cron job
+    scheduler colocated with the database.
+
+-   EC2 plus package archives / build pipeline + shell script. Eventual dream
+    goal, but with changing dependencies it may be a bit difficult to manage.
+
+-   ECS + EBS + Fargate. There were some issues with Fargate, I don't remember
+    what they were.
+
+-   ECS + EBS + CloudFormation. Seems to be the ideal development environment.
+
+-   EC2 + ECR + shell script to self-manage docker-compose. Seems to be the
+    ideal situation for MVP.
+
+This isn't part of the tutorial, this is me learning AWS ECS deployment.
+
+-   Tutorial supports Docker Compose v3.7 file formats, AWS ECS supports Docker
+    Compose v3.0 max at this time.
+
+## Notes
+
+Notes for this tutorial from my hourly journal for Bytes by Ying should be
+available here: https://bytes.yingw787.com/categories/tinydevcrm/
+
 ## TODOs
 
 - Not using a fully-managed database service, should switch to RDS if / when
